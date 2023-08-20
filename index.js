@@ -16,3 +16,15 @@ function playRound(playerSelection, computerSelection) {
     return `You win! ${playerSelection} beats ${computerSelection}`;
   }
 }
+
+function game() {
+  let i = 5;
+  while (i > 0) {
+    const playerSelection = prompt('Rock, paper, or scissors?').toLowerCase();
+    const computerSelection = getComputerChoice().toLowerCase();
+    console.log(playRound(playerSelection, computerSelection));
+    i--;
+  }
+}
+
+console.log(game());
