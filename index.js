@@ -36,14 +36,14 @@ function playRound(playerSelection, computerSelection) {
 
 function increasePlayerScore(playerSelection, computerSelection) {
   playerScore += 1;
-  pscore.textContent = `Your score: ${playerScore}`;
   result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+  pscore.textContent = `Your score: ${playerScore}`;
 }
 
 function increaseComputerScore(playerSelection, computerSelection) {
   computerScore += 1;
-  cscore.textContent = `Computer score: ${computerScore}`;
   result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+  cscore.textContent = `Computer score: ${computerScore}`;
 }
 
 function game() {
