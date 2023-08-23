@@ -28,9 +28,9 @@ function playRound(playerSelection, computerSelection) {
     || playerSelection == 'scissors' && computerSelection == 'paper'
     || playerSelection == 'rock' && computerSelection == 'scissors'
   ) {
-    updatePlayerScore(playerSelection, computerSelection);
+    increasePlayerScore(playerSelection, computerSelection);
   } else {
-    updateComputerScore(playerSelection, computerSelection);
+    increaseComputerScore(playerSelection, computerSelection);
   }
 }
 
