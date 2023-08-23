@@ -1,15 +1,15 @@
 function getComputerChoice() {
-  const choices = ['rock', 'paper', 'scissors'];
+  const choices = ['Rock', 'Paper', 'Scissors'];
   const index = Math.floor(Math.random() * choices.length);
   return choices[index];
 }
 
 const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => playRound('rock', getComputerChoice()));
+rock.addEventListener('click', () => playRound('Rock', getComputerChoice()));
 const paper = document.querySelector('#paper');
-paper.addEventListener('click', () => playRound('paper', getComputerChoice()));
+paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
 const scissors = document.querySelector('#scissors');
-scissors.addEventListener('click', () => playRound('scissors', getComputerChoice()));
+scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
 
 let playerScore = 0;
 let computerScore = 0;
@@ -24,9 +24,9 @@ const result = document.querySelector('.result');
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     result.textContent = "It's a tie!";
-  } else if (playerSelection == 'paper' && computerSelection == 'rock'
-    || playerSelection == 'scissors' && computerSelection == 'paper'
-    || playerSelection == 'rock' && computerSelection == 'scissors'
+  } else if (playerSelection == 'Paper' && computerSelection == 'Rock'
+    || playerSelection == 'Scissors' && computerSelection == 'Paper'
+    || playerSelection == 'Rock' && computerSelection == 'Scissors'
   ) {
     increasePlayerScore(playerSelection, computerSelection);
   } else {
