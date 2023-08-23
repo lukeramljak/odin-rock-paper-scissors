@@ -1,0 +1,7 @@
+body {
+  background-color: #11151c;
+  color: #ecebf3;
+  display: grid;
+  place-content: center;
+  height: 100vw;
+}
