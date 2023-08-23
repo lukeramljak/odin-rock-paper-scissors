@@ -1,6 +1,6 @@
 body {
   background-color: #11151c;
-  color: #ecebf3;
+  color: #f2f3d9;
   display: grid;
   place-content: center;
   height: 100vh;
@@ -8,9 +8,13 @@ body {
 
 button {
   cursor: pointer;
-  background-color: #c7d6d5;
+  background-color: #8d80ad;
   border: none;
   width: 120px;
   border-radius: 40px;
   padding: 1rem;
+}
+
+button:is(:hover) {
+  background-color: #685f81;
 }
