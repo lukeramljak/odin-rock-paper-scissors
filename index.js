@@ -4,39 +4,48 @@ function getComputerChoice() {
   return choices[index];
 }
 
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', () => playRound('rock', getComputerChoice()));
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', () => playRound('paper', getComputerChoice()));
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', () => playRound('scissors', getComputerChoice()));
+
+let playerScore = 0;
+let computerScore = 0;
+
+const cscore = document.querySelector('.computer-score');
+cscore.textContent = `Computer score: ${computerScore}`;
+const pscore = document.querySelector('.player-score');
+pscore.textContent = `Your score: ${playerScore}`;
+
+
 function playRound(playerSelection, computerSelection) {
+  const result = document.querySelector('.result');
+
   if (playerSelection == computerSelection) {
-    return "It's a tie!";
+    result.textContent = "It's a tie!";
   } else if (playerSelection == 'rock' && computerSelection == 'paper'
     || playerSelection == 'paper' && computerSelection == 'scissors'
     || playerSelection == 'scissors' && computerSelection == 'rock'
   ) {
     computerScore += 1;
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
+    cscore.textContent = `Computer score: ${computerScore}`;
+    result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
   } else {
     playerScore += 1;
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    pscore.textContent = `Your score: ${playerScore}`;
+    result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
   }
 }
 
-let playerScore;
-let computerScore;
+// function game() {
 
-function game() {
-  let i = 5;
-  while (i > 0) {
-    const playerSelection = prompt('Rock, paper, or scissors?').toLowerCase();
-    const computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-    i--;
-  }
-  if (playerScore == computerScore) {
-    return "It's a tie!";
-  } else if (playerScore < computerScore) {
-    return "You lose!";
-  } else {
-    return "You win!";
-  }
-}
-
-console.log(game());
+//   if (playerScore == computerScore) {
+//     return "It's a tie!";
+//   } else if (playerScore < computerScore) {
+//     return "You lose!";
+//   } else {
+//     return "You win!";
+//   }
+// }
