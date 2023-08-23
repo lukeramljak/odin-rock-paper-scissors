@@ -10,6 +10,8 @@ const paper = document.querySelector('#paper');
 paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
+const restart = document.querySelector('.restart');
+restart.addEventListener('click', () => restartGame());
 
 let playerScore = 0;
 let computerScore = 0;
@@ -28,6 +30,14 @@ function playRound(playerSelection, computerSelection) {
     increasePlayerScore(playerSelection, computerSelection);
   } else {
     increaseComputerScore(playerSelection, computerSelection);
+  }
+
+  if (playerScore == 5 || computerScore == 5) {
+    result.textContent = 'Game over!';
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    restart.style.display = 'block';
   }
 }
 
@@ -49,4 +59,16 @@ function increaseComputerScore(playerSelection, computerSelection) {
   computerScore += 1;
   result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
   cscore.textContent = `Computer score: ${computerScore}`;
+}
+
+function restartGame() {
+  playerScore = 0;
+  computerScore = 0;
+  pscore.textContent = `Your score: ${playerScore}`;
+  cscore.textContent = `Computer score: ${computerScore}`;
+  rock.disabled = false;
+  paper.disabled = false;
+  scissors.disabled = false;
+  restart.style.display = 'none';
+  result.textContent = 'Ready!';
 }
