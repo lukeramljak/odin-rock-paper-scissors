@@ -14,36 +14,36 @@ scissors.addEventListener('click', () => playRound('scissors', getComputerChoice
 let playerScore = 0;
 let computerScore = 0;
 
-const cscore = document.querySelector('.computer-score');
-cscore.textContent = `Computer score: ${computerScore}`;
 const pscore = document.querySelector('.player-score');
 pscore.textContent = `Your score: ${playerScore}`;
+const cscore = document.querySelector('.computer-score');
+cscore.textContent = `Computer score: ${computerScore}`;
 
 const result = document.querySelector('.result');
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     result.textContent = "It's a tie!";
-  } else if (playerSelection == 'rock' && computerSelection == 'paper'
-    || playerSelection == 'paper' && computerSelection == 'scissors'
-    || playerSelection == 'scissors' && computerSelection == 'rock'
+  } else if (playerSelection == 'paper' && computerSelection == 'rock'
+    || playerSelection == 'scissors' && computerSelection == 'paper'
+    || playerSelection == 'rock' && computerSelection == 'scissors'
   ) {
-    updateComputerScore(playerSelection, computerSelection);
-  } else {
     updatePlayerScore(playerSelection, computerSelection);
+  } else {
+    updateComputerScore(playerSelection, computerSelection);
   }
 }
 
-function updateComputerScore(playerSelection, computerSelection) {
-  computerScore += 1;
-  cscore.textContent = `Computer score: ${computerScore}`;
-  result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-}
-
-function updatePlayerScore(playerSelection, computerSelection) {
+function increasePlayerScore(playerSelection, computerSelection) {
   playerScore += 1;
   pscore.textContent = `Your score: ${playerScore}`;
   result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+}
+
+function increaseComputerScore(playerSelection, computerSelection) {
+  computerScore += 1;
+  cscore.textContent = `Computer score: ${computerScore}`;
+  result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
 }
 
 function game() {
