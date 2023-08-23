@@ -17,9 +17,9 @@ let playerScore = 0;
 let computerScore = 0;
 
 const pscore = document.querySelector('.player-score');
-pscore.textContent = `Your score: ${playerScore}`;
+pscore.textContent = `You: ${playerScore}`;
 const cscore = document.querySelector('.computer-score');
-cscore.textContent = `Computer score: ${computerScore}`;
+cscore.textContent = `Computer: ${computerScore}`;
 
 const result = document.querySelector('.result');
 
@@ -52,20 +52,20 @@ function playerWins(playerSelection, computerSelection) {
 function increasePlayerScore(playerSelection, computerSelection) {
   playerScore += 1;
   result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-  pscore.textContent = `Your score: ${playerScore}`;
+  pscore.textContent = `You: ${playerScore}`;
 }
 
 function increaseComputerScore(playerSelection, computerSelection) {
   computerScore += 1;
   result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-  cscore.textContent = `Computer score: ${computerScore}`;
+  cscore.textContent = `Computer: ${computerScore}`;
 }
 
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
-  pscore.textContent = `Your score: ${playerScore}`;
-  cscore.textContent = `Computer score: ${computerScore}`;
+  pscore.textContent = `You: ${playerScore}`;
+  cscore.textContent = `Computer: ${computerScore}`;
   rock.disabled = false;
   paper.disabled = false;
   scissors.disabled = false;
