@@ -24,14 +24,19 @@ const result = document.querySelector('.result');
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     result.textContent = "It's a tie!";
-  } else if (playerSelection == 'Paper' && computerSelection == 'Rock'
-    || playerSelection == 'Scissors' && computerSelection == 'Paper'
-    || playerSelection == 'Rock' && computerSelection == 'Scissors'
-  ) {
+  } else if (playerWins(playerSelection, computerSelection)) {
     increasePlayerScore(playerSelection, computerSelection);
   } else {
     increaseComputerScore(playerSelection, computerSelection);
   }
+}
+
+function playerWins(playerSelection, computerSelection) {
+  if (playerSelection == 'Paper' && computerSelection == 'Rock'
+    || playerSelection == 'Scissors' && computerSelection == 'Paper'
+    || playerSelection == 'Rock' && computerSelection == 'Scissors') {
+    return true;
+  };
 }
 
 function increasePlayerScore(playerSelection, computerSelection) {
@@ -44,12 +49,4 @@ function increaseComputerScore(playerSelection, computerSelection) {
   computerScore += 1;
   result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
   cscore.textContent = `Computer score: ${computerScore}`;
-}
-
-function game() {
-  if (playerScore < computerScore) {
-    return "You lost!";
-  } else {
-    return "You won!";
-  }
 }
