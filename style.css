@@ -4,6 +4,7 @@ body {
   display: grid;
   place-content: center;
   height: 100vh;
+  font-size: 1.75rem;
 }
 
 button {
@@ -17,4 +18,25 @@ button {
 
 button:is(:hover) {
   background-color: #685f81;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
 }
