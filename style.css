@@ -19,6 +19,8 @@ body {
 }
 
 button {
+  font-family: 'Noto Color Emoji', sans-serif;
+  font-size: 2rem;
   cursor: pointer;
   background-color: #8d80ad;
   border: none;
@@ -39,12 +41,13 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .scores {
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .buttons {
