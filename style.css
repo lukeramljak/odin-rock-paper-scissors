@@ -29,18 +29,19 @@ main {
 }
 
 button {
-  font-family: 'Noto Color Emoji', sans-serif;
+  color: #f2f3d9;
+  font-family: 'Noto Emoji', sans-serif;
   font-size: 2rem;
   cursor: pointer;
   background-color: transparent;
-  border: 2px solid #8679b4;
+  border: none;
   width: 75%;
   border-radius: 10px;
   padding: 1rem;
 }
 
 button:is(:focus, :hover) {
-  background-color: #8679b4;
+  background-color: #9590a9;
 }
 
 h1 {
