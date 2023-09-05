@@ -45,7 +45,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 24px;
 }
 
 .scores {
@@ -59,8 +59,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  margin: 1rem 0;
-  gap: 0.5rem;
+  width: 100%;
+  gap: 16px;
 }
 
 .restart {
