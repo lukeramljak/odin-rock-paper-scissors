@@ -15,11 +15,11 @@ body {
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #11151c;
+  background-color: #131415;
   color: #f2f3d9;
   display: grid;
   place-content: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 button {
@@ -38,14 +38,19 @@ button:is(:focus, :hover) {
 }
 
 h1 {
+  font-size: 2.5rem;
   text-align: center;
+  margin-bottom: 32px;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #1a1c1e;
+  padding: 32px;
   gap: 24px;
+  border-radius: 16px;
 }
 
 .scores {
