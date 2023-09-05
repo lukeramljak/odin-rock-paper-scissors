@@ -26,6 +26,7 @@ main {
   display: grid;
   flex-direction: column;
   gap: 16px;
+  padding: 16px;
 }
 
 button {
