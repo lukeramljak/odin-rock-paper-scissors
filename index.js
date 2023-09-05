@@ -67,6 +67,7 @@ function increaseComputerScore(playerSelection, computerSelection) {
   showWinnerColour(cScore);
 }
 
+// TODO: remove timeout and instead keep winner green until next click
 function showWinnerColour(element) {
   setTimeout(() => {
     element.parentElement.classList.remove('winner-colour');
