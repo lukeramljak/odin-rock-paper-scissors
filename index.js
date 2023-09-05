@@ -10,11 +10,12 @@ const paper = document.querySelector('#paper');
 paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
-const restart = document.querySelector('.restart');
+const restart = document.getElementById('restart');
 restart.addEventListener('click', () => restartGame());
 
 let playerScore = 0;
 let computerScore = 0;
+restart.style.display = 'none';
 
 const pscore = document.querySelector('.player-score');
 pscore.textContent = `You: ${playerScore}`;
@@ -34,9 +35,9 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerScore == 5 || computerScore == 5) {
     result.textContent = 'Game over!';
-    rock.disabled = true;
-    paper.disabled = true;
-    scissors.disabled = true;
+    rock.style.display = 'none';
+    paper.style.display = 'none';
+    scissors.style.display = 'none';
     restart.style.display = 'block';
   }
 }
@@ -66,9 +67,9 @@ function restartGame() {
   computerScore = 0;
   pscore.textContent = `You: ${playerScore}`;
   cscore.textContent = `Computer: ${computerScore}`;
-  rock.disabled = false;
-  paper.disabled = false;
-  scissors.disabled = false;
+  rock.style.display = 'block';
+  paper.style.display = 'block';
+  scissors.style.display = 'block';
   restart.style.display = 'none';
   result.textContent = 'Ready!';
 }
