@@ -76,6 +76,10 @@ h1 {
   gap: 16px;
 }
 
+#restart {
+  display: none;
+}
+
 .winner-colour {
   background-color: green;
 }

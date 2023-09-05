@@ -12,15 +12,13 @@ const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
 const restart = document.getElementById('restart');
 restart.addEventListener('click', () => restartGame());
-restart.style.display = 'none';
 
 let playerScore = 0;
 let computerScore = 0;
 
 const playerScoreElement = document.querySelector('.player-score');
-playerScoreElement.textContent = `You: ${playerScore}`;
 const computerScoreElement = document.querySelector('.computer-score');
-computerScoreElement.textContent = `Computer: ${computerScore}`;
+setScoreContent();
 
 const result = document.querySelector('.result');
 
@@ -35,10 +33,7 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerScore == 5 || computerScore == 5) {
     result.textContent = 'Game over!';
-    rock.style.display = 'none';
-    paper.style.display = 'none';
-    scissors.style.display = 'none';
-    restart.style.display = 'block';
+    setButtonStates('none', 'block');
   }
 }
 
@@ -73,14 +68,22 @@ function showWinnerColour(element) {
   }, 600);
 }
 
+function setButtonStates(state1, state2) {
+  rock.style.display = state1;
+  paper.style.display = state1;
+  scissors.style.display = state1;
+  restart.style.display = state2;
+}
+
+function setScoreContent() {
+  playerScoreElement.textContent = `You: ${playerScore}`;
+  computerScoreElement.textContent = `Computer: ${computerScore}`;
+}
+
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
-  playerScoreElement.textContent = `You: ${playerScore}`;
-  computerScoreElement.textContent = `Computer: ${computerScore}`;
-  rock.style.display = 'block';
-  paper.style.display = 'block';
-  scissors.style.display = 'block';
-  restart.style.display = 'none';
   result.textContent = 'Ready!';
+  setScoreContent();
+  setButtonStates('block', 'none');
 }
