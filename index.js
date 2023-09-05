@@ -12,17 +12,18 @@ const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
 const restart = document.getElementById('restart');
 restart.addEventListener('click', () => restartGame());
+restart.style.display = 'none';
 
 let playerScore = 0;
 let computerScore = 0;
-restart.style.display = 'none';
 
-const pscore = document.querySelector('.player-score');
-pscore.textContent = `You: ${playerScore}`;
-const cscore = document.querySelector('.computer-score');
-cscore.textContent = `Computer: ${computerScore}`;
+const pScore = document.querySelector('.player-score');
+pScore.textContent = `You: ${playerScore}`;
+const cScore = document.querySelector('.computer-score');
+cScore.textContent = `Computer: ${computerScore}`;
 
 const result = document.querySelector('.result');
+const scoreBox = document.querySelector('.score-box');
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
@@ -53,20 +54,30 @@ function playerWins(playerSelection, computerSelection) {
 function increasePlayerScore(playerSelection, computerSelection) {
   playerScore += 1;
   result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-  pscore.textContent = `You: ${playerScore}`;
+  pScore.textContent = `You: ${playerScore}`;
+  pScore.parentElement.classList.add('winner-colour');
+  showWinnerColour(pScore);
 }
 
 function increaseComputerScore(playerSelection, computerSelection) {
   computerScore += 1;
   result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-  cscore.textContent = `Computer: ${computerScore}`;
+  cScore.textContent = `Computer: ${computerScore}`;
+  cScore.parentElement.classList.add('winner-colour');
+  showWinnerColour(cScore);
+}
+
+function showWinnerColour(element) {
+  setTimeout(() => {
+    element.parentElement.classList.remove('winner-colour');
+  }, 600);
 }
 
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
-  pscore.textContent = `You: ${playerScore}`;
-  cscore.textContent = `Computer: ${computerScore}`;
+  pScore.textContent = `You: ${playerScore}`;
+  cScore.textContent = `Computer: ${computerScore}`;
   rock.style.display = 'block';
   paper.style.display = 'block';
   scissors.style.display = 'block';
