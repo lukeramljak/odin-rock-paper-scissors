@@ -26,12 +26,7 @@ function playRound(playerChoice, computerChoice) {
     resultElement.textContent = "Tie!";
     return;
   }
-  checkRoundWinner(playerChoice, computerChoice);
-  setScoreTextContent();
-  checkIfGameOver();
-}
 
-function checkRoundWinner(playerChoice, computerChoice) {
   if (playerChoice == 'Paper' && computerChoice == 'Rock'
     || playerChoice == 'Scissors' && computerChoice == 'Paper'
     || playerChoice == 'Rock' && computerChoice == 'Scissors') {
@@ -41,6 +36,9 @@ function checkRoundWinner(playerChoice, computerChoice) {
     computerScore += 1;
     resultElement.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
   }
+
+  setScoreTextContent();
+  checkIfGameOver();
 }
 
 function checkIfGameOver() {
