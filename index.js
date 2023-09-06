@@ -1,6 +1,6 @@
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
 const restart = document.getElementById('restart');
 
 const playerScoreElement = document.querySelector('.player-score');
