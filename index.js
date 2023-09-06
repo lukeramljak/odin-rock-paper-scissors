@@ -9,7 +9,6 @@ const resultElement = document.querySelector('.result');
 
 let playerScore = 0;
 let computerScore = 0;
-setScoreTextContent();
 
 rock.addEventListener('click', () => playRound('Rock', getComputerChoice()));
 paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
@@ -29,7 +28,7 @@ function playRound(playerChoice, computerChoice) {
   }
   checkRoundWinner(playerChoice, computerChoice);
   setScoreTextContent();
-  checkGameWinner();
+  checkIfGameOver();
 }
 
 function checkRoundWinner(playerChoice, computerChoice) {
@@ -44,7 +43,7 @@ function checkRoundWinner(playerChoice, computerChoice) {
   }
 }
 
-function checkGameWinner() {
+function checkIfGameOver() {
   if (playerScore == 5 || computerScore == 5) {
     resultElement.textContent = 'Game over. Play again?';
     setButtonStates('none', 'block');
@@ -66,8 +65,8 @@ function setButtonStates(state1, state2) {
 }
 
 function setScoreTextContent() {
-  playerScoreElement.textContent = `You: ${playerScore}`;
-  computerScoreElement.textContent = `Computer: ${computerScore}`;
+  playerScoreElement.textContent = playerScore;
+  computerScoreElement.textContent = computerScore;
 }
 
 function restartGame() {
