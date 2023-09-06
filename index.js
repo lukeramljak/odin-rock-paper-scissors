@@ -5,7 +5,7 @@ const restart = document.getElementById('restart');
 
 const playerScoreElement = document.querySelector('.player-score');
 const computerScoreElement = document.querySelector('.computer-score');
-const resultElement = document.querySelector('.resultElement');
+const resultElement = document.querySelector('.result');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -31,6 +31,8 @@ function playRound(playerChoice, computerChoice) {
     increaseComputerScore(playerChoice, computerChoice);
   }
 
+  setScoreContent();
+
   if (playerScore == 5 || computerScore == 5) {
     resultElement.textContent = 'Game over!';
     setButtonStates('none', 'block');
@@ -48,17 +50,11 @@ function playerWins(playerChoice, computerChoice) {
 function increasePlayerScore(playerChoice, computerChoice) {
   playerScore += 1;
   resultElement.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
-  playerScoreElement.textContent = `You: ${playerScore}`;
-  playerScoreElement.parentElement.classList.add('winner-colour');
-  showWinnerColour(playerScoreElement);
 }
 
 function increaseComputerScore(playerChoice, computerChoice) {
   computerScore += 1;
   resultElement.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
-  computerScoreElement.textContent = `Computer: ${computerScore}`;
-  computerScoreElement.parentElement.classList.add('winner-colour');
-  showWinnerColour(computerScoreElement);
 }
 
 // TODO: remove timeout and instead keep winner green until next click
