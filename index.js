@@ -1,61 +1,61 @@
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const restart = document.getElementById('restart');
+
+const playerScoreElement = document.querySelector('.player-score');
+const computerScoreElement = document.querySelector('.computer-score');
+const resultElement = document.querySelector('.resultElement');
+
+let playerScore = 0;
+let computerScore = 0;
+setScoreContent();
+
+rock.addEventListener('click', () => playRound('Rock', getComputerChoice()));
+paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
+scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
+restart.addEventListener('click', () => restartGame());
+
 function getComputerChoice() {
   const choices = ['Rock', 'Paper', 'Scissors'];
   const index = Math.floor(Math.random() * choices.length);
   return choices[index];
 }
 
-const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => playRound('Rock', getComputerChoice()));
-const paper = document.querySelector('#paper');
-paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
-const scissors = document.querySelector('#scissors');
-scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
-const restart = document.getElementById('restart');
-restart.addEventListener('click', () => restartGame());
-
-let playerScore = 0;
-let computerScore = 0;
-
-const playerScoreElement = document.querySelector('.player-score');
-const computerScoreElement = document.querySelector('.computer-score');
-setScoreContent();
-
-const result = document.querySelector('.result');
-
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection == computerSelection) {
-    result.textContent = "It's a tie!";
-  } else if (playerWins(playerSelection, computerSelection)) {
-    increasePlayerScore(playerSelection, computerSelection);
+function playRound(playerChoice, computerChoice) {
+  if (playerChoice == computerChoice) {
+    resultElement.textContent = "It's a tie!";
+  } else if (playerWins(playerChoice, computerChoice)) {
+    increasePlayerScore(playerChoice, computerChoice);
   } else {
-    increaseComputerScore(playerSelection, computerSelection);
+    increaseComputerScore(playerChoice, computerChoice);
   }
 
   if (playerScore == 5 || computerScore == 5) {
-    result.textContent = 'Game over!';
+    resultElement.textContent = 'Game over!';
     setButtonStates('none', 'block');
   }
 }
 
-function playerWins(playerSelection, computerSelection) {
-  if (playerSelection == 'Paper' && computerSelection == 'Rock'
-    || playerSelection == 'Scissors' && computerSelection == 'Paper'
-    || playerSelection == 'Rock' && computerSelection == 'Scissors') {
+function playerWins(playerChoice, computerChoice) {
+  if (playerChoice == 'Paper' && computerChoice == 'Rock'
+    || playerChoice == 'Scissors' && computerChoice == 'Paper'
+    || playerChoice == 'Rock' && computerChoice == 'Scissors') {
     return true;
   };
 }
 
-function increasePlayerScore(playerSelection, computerSelection) {
+function increasePlayerScore(playerChoice, computerChoice) {
   playerScore += 1;
-  result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+  resultElement.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
   playerScoreElement.textContent = `You: ${playerScore}`;
   playerScoreElement.parentElement.classList.add('winner-colour');
   showWinnerColour(playerScoreElement);
 }
 
-function increaseComputerScore(playerSelection, computerSelection) {
+function increaseComputerScore(playerChoice, computerChoice) {
   computerScore += 1;
-  result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+  resultElement.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
   computerScoreElement.textContent = `Computer: ${computerScore}`;
   computerScoreElement.parentElement.classList.add('winner-colour');
   showWinnerColour(computerScoreElement);
@@ -83,7 +83,7 @@ function setScoreContent() {
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
-  result.textContent = 'Ready!';
+  resultElement.textContent = 'Ready!';
   setScoreContent();
   setButtonStates('block', 'none');
 }
