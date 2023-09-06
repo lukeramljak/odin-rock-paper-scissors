@@ -1,71 +1,51 @@
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+const restart = document.getElementById('restart');
+
+const playerScoreElement = document.querySelector('.player-score');
+const computerScoreElement = document.querySelector('.computer-score');
+const resultElement = document.querySelector('.result');
+
+let playerScore = 0;
+let computerScore = 0;
+
+rock.addEventListener('click', () => playRound('Rock', getComputerChoice()));
+paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
+scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
+restart.addEventListener('click', () => restartGame());
+
 function getComputerChoice() {
   const choices = ['Rock', 'Paper', 'Scissors'];
   const index = Math.floor(Math.random() * choices.length);
   return choices[index];
 }
 
-const rock = document.querySelector('#rock');
-rock.addEventListener('click', () => playRound('Rock', getComputerChoice()));
-const paper = document.querySelector('#paper');
-paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
-const scissors = document.querySelector('#scissors');
-scissors.addEventListener('click', () => playRound('Scissors', getComputerChoice()));
-const restart = document.getElementById('restart');
-restart.addEventListener('click', () => restartGame());
-
-let playerScore = 0;
-let computerScore = 0;
-
-const playerScoreElement = document.querySelector('.player-score');
-const computerScoreElement = document.querySelector('.computer-score');
-setScoreContent();
-
-const result = document.querySelector('.result');
-
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection == computerSelection) {
-    result.textContent = "It's a tie!";
-  } else if (playerWins(playerSelection, computerSelection)) {
-    increasePlayerScore(playerSelection, computerSelection);
-  } else {
-    increaseComputerScore(playerSelection, computerSelection);
+function playRound(playerChoice, computerChoice) {
+  if (playerChoice == computerChoice) {
+    resultElement.textContent = "Tie!";
+    return;
   }
 
+  if (playerChoice == 'Paper' && computerChoice == 'Rock'
+    || playerChoice == 'Scissors' && computerChoice == 'Paper'
+    || playerChoice == 'Rock' && computerChoice == 'Scissors') {
+    playerScore += 1;
+    resultElement.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
+  } else {
+    computerScore += 1;
+    resultElement.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
+  }
+
+  setScoreTextContent();
+  checkIfGameOver();
+}
+
+function checkIfGameOver() {
   if (playerScore == 5 || computerScore == 5) {
-    result.textContent = 'Game over!';
+    resultElement.textContent = 'Game over. Play again?';
     setButtonStates('none', 'block');
   }
-}
-
-function playerWins(playerSelection, computerSelection) {
-  if (playerSelection == 'Paper' && computerSelection == 'Rock'
-    || playerSelection == 'Scissors' && computerSelection == 'Paper'
-    || playerSelection == 'Rock' && computerSelection == 'Scissors') {
-    return true;
-  };
-}
-
-function increasePlayerScore(playerSelection, computerSelection) {
-  playerScore += 1;
-  result.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
-  playerScoreElement.textContent = `You: ${playerScore}`;
-  playerScoreElement.parentElement.classList.add('winner-colour');
-  showWinnerColour(playerScoreElement);
-}
-
-function increaseComputerScore(playerSelection, computerSelection) {
-  computerScore += 1;
-  result.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
-  computerScoreElement.textContent = `Computer: ${computerScore}`;
-  computerScoreElement.parentElement.classList.add('winner-colour');
-  showWinnerColour(computerScoreElement);
-}
-
-// TODO: remove timeout and instead keep winner green until next click
-function showWinnerColour(element) {
-  setTimeout(() => {
-    element.parentElement.classList.remove('winner-colour');
-  }, 600);
 }
 
 function setButtonStates(state1, state2) {
@@ -75,15 +55,15 @@ function setButtonStates(state1, state2) {
   restart.style.display = state2;
 }
 
-function setScoreContent() {
-  playerScoreElement.textContent = `You: ${playerScore}`;
-  computerScoreElement.textContent = `Computer: ${computerScore}`;
+function setScoreTextContent() {
+  playerScoreElement.textContent = playerScore;
+  computerScoreElement.textContent = computerScore;
 }
 
 function restartGame() {
   playerScore = 0;
   computerScore = 0;
-  result.textContent = 'Ready!';
-  setScoreContent();
+  resultElement.textContent = 'Ready!';
+  setScoreTextContent();
   setButtonStates('block', 'none');
 }
