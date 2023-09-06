@@ -41,8 +41,14 @@ button {
   padding: 1rem;
 }
 
-button:is(:focus, :hover) {
-  background-color: #9590a9;
+@media (hover: hover) {
+  button:hover {
+    background-color: #9590a9;
+  }
+
+  button:active {
+    background-color: #777388;
+  }
 }
 
 h1 {
