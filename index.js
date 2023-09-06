@@ -9,7 +9,7 @@ const resultElement = document.querySelector('.result');
 
 let playerScore = 0;
 let computerScore = 0;
-setScoreContent();
+setScoreTextContent();
 
 rock.addEventListener('click', () => playRound('Rock', getComputerChoice()));
 paper.addEventListener('click', () => playRound('Paper', getComputerChoice()));
@@ -24,37 +24,31 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice) {
   if (playerChoice == computerChoice) {
-    resultElement.textContent = "It's a tie!";
-  } else if (playerWins(playerChoice, computerChoice)) {
-    increasePlayerScore(playerChoice, computerChoice);
-  } else {
-    increaseComputerScore(playerChoice, computerChoice);
+    resultElement.textContent = "Tie!";
+    return;
   }
-
-  setScoreContent();
-
-  if (playerScore == 5 || computerScore == 5) {
-    resultElement.textContent = 'Game over!';
-    setButtonStates('none', 'block');
-  }
+  checkRoundWinner(playerChoice, computerChoice);
+  setScoreTextContent();
+  checkGameWinner();
 }
 
-function playerWins(playerChoice, computerChoice) {
+function checkRoundWinner(playerChoice, computerChoice) {
   if (playerChoice == 'Paper' && computerChoice == 'Rock'
     || playerChoice == 'Scissors' && computerChoice == 'Paper'
     || playerChoice == 'Rock' && computerChoice == 'Scissors') {
-    return true;
-  };
+    playerScore += 1;
+    resultElement.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
+  } else {
+    computerScore += 1;
+    resultElement.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
+  }
 }
 
-function increasePlayerScore(playerChoice, computerChoice) {
-  playerScore += 1;
-  resultElement.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
-}
-
-function increaseComputerScore(playerChoice, computerChoice) {
-  computerScore += 1;
-  resultElement.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
+function checkGameWinner() {
+  if (playerScore == 5 || computerScore == 5) {
+    resultElement.textContent = 'Game over. Play again?';
+    setButtonStates('none', 'block');
+  }
 }
 
 // TODO: remove timeout and instead keep winner green until next click
@@ -71,7 +65,7 @@ function setButtonStates(state1, state2) {
   restart.style.display = state2;
 }
 
-function setScoreContent() {
+function setScoreTextContent() {
   playerScoreElement.textContent = `You: ${playerScore}`;
   computerScoreElement.textContent = `Computer: ${computerScore}`;
 }
@@ -80,6 +74,6 @@ function restartGame() {
   playerScore = 0;
   computerScore = 0;
   resultElement.textContent = 'Ready!';
-  setScoreContent();
+  setScoreTextContent();
   setButtonStates('block', 'none');
 }
