@@ -50,13 +50,6 @@ function checkIfGameOver() {
   }
 }
 
-// TODO: remove timeout and instead keep winner green until next click
-function showWinnerColour(element) {
-  setTimeout(() => {
-    element.parentElement.classList.remove('winner-colour');
-  }, 600);
-}
-
 function setButtonStates(state1, state2) {
   rock.style.display = state1;
   paper.style.display = state1;
