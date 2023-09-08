@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'emoji': ['Noto Emoji', 'sans-serif'],
+      'inter': ['Inter', 'sans-serif'],
     },
     extend: {},
   },
