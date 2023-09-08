@@ -10,65 +10,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
   </head>
 
   <body
-    class="grid h-full place-content-center bg-slate-950 font-inter text-xl text-gray-100"
-  >
+    class="grid h-full place-content-center bg-slate-950 font-inter text-xl text-gray-100">
     <main class="grid place-content-center gap-4 p-4">
       <h1 class="text-center text-4xl">Rock Paper Scissors</h1>
       <div
         id="result"
-        class="flex w-full flex-col items-center gap-4 rounded-2xl bg-slate-800 p-4"
-      >
+        class="flex w-full flex-col items-center gap-4 rounded-2xl bg-slate-800 p-4">
         Ready!
       </div>
       <div id="scores" class="flex w-full items-center justify-center gap-4">
         <div
-          class="flex w-full flex-col items-center gap-4 rounded-2xl bg-slate-800 p-4"
-        >
+          class="flex w-full flex-col items-center gap-4 rounded-2xl bg-slate-800 p-4">
           <span>You</span>
           <span id="player-score">0</span>
         </div>
         <div
-          class="flex w-full flex-col items-center gap-4 rounded-2xl bg-slate-800 p-4"
-        >
+          class="flex w-full flex-col items-center gap-4 rounded-2xl bg-slate-800 p-4">
           <span>Computer</span>
           <span id="computer-score">0</span>
         </div>
       </div>
       <div
-        class="flex w-full flex-col items-center gap-4 rounded-2xl bg-slate-800 p-4"
-      >
+        class="flex w-full flex-col items-center gap-4 rounded-2xl bg-slate-800 p-4">
         <div class="flex w-full items-center justify-center gap-4">
           <button
             id="rock"
-            class="w-full cursor-pointer rounded-lg border-none bg-transparent p-4 font-emoji text-3xl text-stone-100 hover:bg-blue-400"
-          >
+            class="w-full cursor-pointer rounded-lg border-none bg-transparent p-4 font-emoji text-3xl text-stone-100 hover:bg-blue-400">
             🪨
           </button>
           <button
             id="paper"
-            class="w-full cursor-pointer rounded-lg border-none bg-transparent p-4 font-emoji text-3xl text-stone-100 hover:bg-blue-400"
-          >
+            class="w-full cursor-pointer rounded-lg border-none bg-transparent p-4 font-emoji text-3xl text-stone-100 hover:bg-blue-400">
             🗒️
           </button>
           <button
             id="scissors"
-            class="w-full cursor-pointer rounded-lg border-none bg-transparent p-4 font-emoji text-3xl text-stone-100 hover:bg-blue-400"
-          >
+            class="w-full cursor-pointer rounded-lg border-none bg-transparent p-4 font-emoji text-3xl text-stone-100 hover:bg-blue-400">
             ✂️
           </button>
           <button
             id="restart"
-            class="hidden w-full cursor-pointer rounded-lg border-none bg-transparent p-4 font-emoji text-3xl text-stone-100 hover:bg-blue-400"
-          >
+            class="hidden w-full cursor-pointer rounded-lg border-none bg-transparent p-4 font-emoji text-3xl text-stone-100 hover:bg-blue-400">
             ↻
           </button>
         </div>
