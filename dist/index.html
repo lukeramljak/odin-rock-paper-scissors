@@ -1,42 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rock Paper Scissors</title>
-  <script src="index.js" defer></script>
-  <link rel="stylesheet" href="output.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap" rel="stylesheet">
-</head>
-
-<body>
-  <main>
-    <h1>Rock Paper Scissors</h1>
-    <div class="container result">Ready!</div>
-    <div class="scores">
-      <div class="container">
-        <span>You</span>
-        <span class="player-score">0</span>
+  <body
+    class="bg-slate-950 text-gray-100 grid place-content-center text-xl h-full"
+  >
+    <main class="grid place-content-center gap-4 p-4">
+      <h1>Rock Paper Scissors</h1>
+      <div class="container result">Ready!</div>
+      <div class="scores">
+        <div class="container">
+          <span>You</span>
+          <span class="player-score">0</span>
+        </div>
+        <div class="container">
+          <span>Computer</span>
+          <span class="computer-score">0</span>
+        </div>
       </div>
       <div class="container">
-        <span>Computer</span>
-        <span class="computer-score">0</span>
+        <div class="buttons">
+          <button id="rock">🪨</button>
+          <button id="paper">🗒️</button>
+          <button id="scissors">✂️</button>
+          <button id="restart">↻</button>
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="buttons">
-        <button id="rock">🪨</button>
-        <button id="paper">🗒️</button>
-        <button id="scissors">✂️</button>
-        <button id="restart">↻</button>
-      </div>
-    </div>
-  </main>
-</body>
-
-
+    </main>
+  </body>
 </html>
