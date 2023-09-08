@@ -3,9 +3,9 @@ const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
 const restart = document.getElementById('restart');
 
-const playerScoreElement = document.querySelector('.player-score');
-const computerScoreElement = document.querySelector('.computer-score');
-const resultElement = document.querySelector('.result');
+const playerScoreElement = document.getElementById('player-score');
+const computerScoreElement = document.getElementById('computer-score');
+const resultElement = document.getElementById('result');
 
 let playerScore = 0;
 let computerScore = 0;
